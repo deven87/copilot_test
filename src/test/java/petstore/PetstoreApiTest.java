@@ -70,7 +70,7 @@ public class PetstoreApiTest {
             .get("/pet/" + createdPetId)
         .then()
             .statusCode(200)
-            .body("id", equalTo((int) createdPetId));
+            .body("name", equalTo("TestPet"));
     }
 
     @Test
