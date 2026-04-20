@@ -62,6 +62,19 @@ public class PetstoreApiTest {
 
     @Test
     @Order(4)
+    void getPetById() {
+        RestAssured.baseURI = "https://petstore.swagger.io/v2";
+        RestAssured.given()
+            .accept(ContentType.JSON)
+        .when()
+            .get("/pet/" + createdPetId)
+        .then()
+            .statusCode(200)
+            .body("name", equalTo("TestPet"));
+    }
+
+    @Test
+    @Order(5)
     void deletePet() {
         RestAssured.baseURI = "https://petstore.swagger.io/v2";
         Response response = RestAssured.given()
